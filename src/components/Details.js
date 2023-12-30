@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import blogs from "../data/blogs";
+import "./Detail.css";
 
 export default function Details() {
   const { id } = useParams();
@@ -16,11 +17,17 @@ export default function Details() {
     setImage(result.image_url);
     setContent(result.content);
     setAuthor(result.author);
-  }, [id]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
-    <>
-      <h2>รายละเอียดบทความ : {id}</h2>
-    </>
+    <div className="container">
+      <h2 className="title">บทความ : {title}</h2>
+      <img src={image} alt={title} className="blog-image" />
+      <div className="blog-detail">
+        <strong>ผู้เขียนบทความ: {author}</strong>
+      </div>
+      <p>{content}</p>
+    </div>
   );
 }

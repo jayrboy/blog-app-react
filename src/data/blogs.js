@@ -39,7 +39,7 @@ const blogs = [
     id: 5,
     title: "เที่ยวทะเล",
     image_url:
-      "https://cdn.pixabay.com/photo/2016/11/23/15/14/beach-1853442_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2016/03/04/19/36/beach-1236581_1280.jpg",
     content:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Massa placerat duis ultricies lacus. Arcu cursus euismod quis viverra nibh cras pulvinar. Aenean et tortor at risus. Lorem donec massa sapien faucibus et molestie ac feugiat. Elit at imperdiet dui accumsan sit amet. Imperdiet dui accumsan sit amet nulla facilisi morbi tempus iaculis. Est placerat in egestas erat imperdiet sed euismod nisi. Ornare arcu dui vivamus arcu felis bibendum ut tristique et. Neque convallis a cras semper auctor. Sapien nec sagittis aliquam malesuada bibendum. Scelerisque mauris pellentesque pulvinar pellentesque habitant. Et malesuada fames ac turpis egestas integer eget aliquet.",
     author: "นักเขียนอิสระ",

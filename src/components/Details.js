@@ -26,8 +26,8 @@ export default function Details() {
       <img src={image} alt={title} className="blog-image" />
       <div className="blog-detail">
         <strong>ผู้เขียนบทความ: {author}</strong>
+        <p>{content}</p>
       </div>
-      <p>{content}</p>
     </div>
   );
 }

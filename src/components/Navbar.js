@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 export default function Navbar() {
   return (
     <nav>
-      <Link to="/">
+      <Link to="/" className="logo">
         <h3>Blog Application</h3>
       </Link>
       <Link to="/">หน้าแรก</Link>

@@ -3,6 +3,8 @@ import About from "./components/About";
 import Blogs from "./components/Blogs";
 import Navbar from "./components/Navbar";
 import NotFound from "./components/NotFound";
+import Details from "./components/Details";
+
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
@@ -16,6 +18,7 @@ function App() {
         <Route path="*" element={<NotFound />}></Route>
         <Route path="/home" element={<Navigate to="/" />}></Route>
         <Route path="/info" element={<Navigate to="/about" />}></Route>
+        <Route path="/blog/:id" element={<Details />}></Route>
       </Routes>
     </BrowserRouter>
   );

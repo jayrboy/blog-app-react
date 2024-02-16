@@ -1,17 +1,17 @@
-import { Link } from "react-router-dom";
-import blogs from "../data/blogs";
-import "./Blogs.css";
-import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom'
+import blogs from '../data/blogs'
+import './Blogs.css'
+import { useState, useEffect } from 'react'
 
 export default function Blog() {
-  const [search, setSearch] = useState("");
-  const [filterBlog, setFilterBlog] = useState([]);
+  const [search, setSearch] = useState('')
+  const [filterBlog, setFilterBlog] = useState([])
 
   useEffect(() => {
     // กรองข้อมูลชื่อบทความ
-    const result = blogs.filter((item) => item.title.includes(search));
-    setFilterBlog(result);
-  }, [search]);
+    const result = blogs.filter((item) => item.title.includes(search))
+    setFilterBlog(result)
+  }, [search])
 
   return (
     <div className="blogs-container">
@@ -36,5 +36,5 @@ export default function Blog() {
         ))}
       </article>
     </div>
-  );
+  )
 }

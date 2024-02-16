@@ -1,4 +1,4 @@
-import about from "../images/about.svg";
+import about from '../images/about.svg'
 
 export default function About() {
   return (
@@ -6,5 +6,5 @@ export default function About() {
       <h2 className="title">เกี่ยวกับเรา</h2>
       <img src={about} alt="about" />
     </div>
-  );
+  )
 }

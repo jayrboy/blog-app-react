@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import { Link } from 'react-router-dom'
+import './Navbar.css'
 
 export default function Navbar() {
   return (
@@ -11,5 +11,5 @@ export default function Navbar() {
       <Link to="/blogs">บทความทั้งหมด</Link>
       <Link to="/about">เกี่ยวกับเรา</Link>
     </nav>
-  );
+  )
 }

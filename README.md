@@ -1,70 +1,298 @@
-# Getting Started with Create React App
+# Blog Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- แอปพลิเคชัน บทความ
+- การสร้างหน้าเว็บหลายๆ หน้าในหนึ่งแอปพลิเคชัน
+- ด้วย React Router Rom (Version 6)
 
-## Available Scripts
+# JavaScript Object
 
-In the project directory, you can run:
+- data/blogs.js
 
-### `npm start`
+# แสดงรูปภาพ
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- app/images/file.svg
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# โครงสร้างคำสั่ง React Router
 
-### `npm test`
+```sh
+npm install react-router-dom
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- src/App.js
+- กำหนด BrowserRouter สำหรับติดตามการเปลี่ยนแปลง URL ทั้งหมดที่อยู่ในแอป
+- กำหนด Routes สำหรับจัดการกลุ่มของเส้นทางที่ทำงานในแอป
+- กำหนด Route สำหรับกำหนดเส้นทาง (path) และ component ที่จะทำวานในเส้นทางนั้น
+  - กำหนด Navbar/style
+  - กำหนด 404 Page Not Found
+  - การนำรูปภาพเข้ามาใช้งาน
+  - การกำหนด Global Style
+  - วิธีใช้ Navigate
+  - การแสดงข้อมูลบทความด้วยข้อมูล JavaScript Object
+  - วิธีใช้ useParam
+  - ดึงข้อมูลบทความด้วย map()
+  - การสร้าง State เก็บข้อมูล
+  - แสดงรายละเอียดบทความจากตัวแปร State
+  - วิธีสร้างช่อง Search สำหรับค้นหาข้อมูล
+  - การแสดงผลจากช่อง Search
 
-### `npm run build`
+```js
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+import Home from './components/Home'
+import About from './components/About'
+import Blogs from './components/Blogs'
+import Navbar from './components/Navbar'
+import NotFound from './components/NotFound'
+import Details from './components/Details'
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+function App() {
+  return (
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/about" element={<About />}></Route>
+        <Route path="/blogs" element={<Blogs />}></Route>
+        <Route path="*" element={<NotFound />}></Route>
+        <Route path="/home" element={<Navigate to="/" />}></Route>
+        <Route path="/info" element={<Navigate to="/about" />}></Route>
+        <Route path="/blog/:id" element={<Details />}></Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+export default App
+```
 
-### `npm run eject`
+# สร้างเมนู Navbar และกำหนด CSS ใน BrowserRouter
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- components/Navbar.js
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+import { Link } from 'react-router-dom'
+import './Navbar.css'
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+export default function Navbar() {
+  return (
+    <nav>
+      <Link to="/" className="logo">
+        <h3>Blog Application</h3>
+      </Link>
+      <Link to="/">หน้าแรก</Link>
+      <Link to="/blogs">บทความทั้งหมด</Link>
+      <Link to="/about">เกี่ยวกับเรา</Link>
+    </nav>
+  )
+}
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- components/Navbar.css
 
-## Learn More
+```css
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #333;
+}
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+.logo {
+  margin-right: auto;
+  padding-left: 10px;
+  color: white;
+}
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+a {
+  color: white;
+  text-decoration: none;
+  margin-left: 12px;
+  font-size: 18px;
+  padding: 10px;
+}
 
-### Code Splitting
+a:hover {
+  color: orange;
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- index.js
 
-### Analyzing the Bundle Size
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+.title {
+  color: #333;
+  text-align: center;
+}
 
-### Making a Progressive Web App
+img {
+  width: 550px;
+  height: 500px;
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# สร้าง Page Component และกำหนด CSS
 
-### Advanced Configuration
+1. components/Home.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- การแสดงรูปภาพด้วยไฟล์ .svg
 
-### Deployment
+```js
+import home from '../images/home.svg'
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+export default function Home() {
+  return (
+    <div className="container">
+      <h2 className="title">หน้าแรกของเว็บไซต์</h2>
+      <img src={home} alt="home" />
+    </div>
+  )
+}
+```
 
-### `npm run build` fails to minify
+2. components/About.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```js
+import about from '../images/about.svg'
+
+export default function About() {
+  return (
+    <div className="container">
+      <h2 className="title">เกี่ยวกับเรา</h2>
+      <img src={about} alt="about" />
+    </div>
+  )
+}
+```
+
+3. components/Blogs.js
+
+```js
+import { Link } from 'react-router-dom'
+import blogs from '../data/blogs'
+import './Blogs.css'
+import { useState, useEffect } from 'react'
+
+export default function Blog() {
+  const [search, setSearch] = useState('')
+  const [filterBlog, setFilterBlog] = useState([])
+
+  useEffect(() => {
+    // กรองข้อมูลชื่อบทความ
+    const result = blogs.filter((item) => item.title.includes(search))
+    setFilterBlog(result)
+  }, [search])
+
+  return (
+    <div className="blogs-container">
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="ค้นหาบทความ"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+      <article>
+        {filterBlog.map((item) => (
+          <Link to={`/blog/${item.id}`} key={item.id}>
+            <div className="card" key={item.id}>
+              <h2>{item.title}</h2>
+              <p>{item.content.substring(0, 300)}</p>
+              <hr />
+            </div>
+          </Link>
+        ))}
+      </article>
+    </div>
+  )
+}
+```
+
+- components/Blogs.css
+
+```css
+.blogs-container {
+  width: 96%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.card {
+  color: #333;
+}
+
+.search-container {
+  margin: 30px 0;
+}
+
+.search-input {
+  padding: 1em 1em;
+  width: 96%;
+  font-size: 18px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+```
+
+4. components/NotFound.js
+
+```js
+import notfound from '../images/notfound.svg'
+
+export default function NotFound() {
+  return (
+    <div className="container">
+      <h3 className="title">ไม่พบหน้าเว็บ (404 Page Not Found)</h3>
+      <img src={notfound} alt="notfound" />
+    </div>
+  )
+}
+```
+
+5. components/Details.js
+
+```js
+import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import blogs from '../data/blogs'
+import './Detail.css'
+
+export default function Details() {
+  const { id } = useParams()
+  const [title, setTitle] = useState('')
+  const [image, setImage] = useState('')
+  const [content, setContent] = useState('')
+  const [author, setAuthor] = useState('')
+
+  useEffect(() => {
+    // ดึงข้อมูลบทความ
+    const result = blogs.find((item) => item.id === parseInt(id))
+    setTitle(result.title)
+    setImage(result.image_url)
+    setContent(result.content)
+    setAuthor(result.author)
+    // eslint-disable-next-line
+  }, [])
+
+  return (
+    <div className="container">
+      <h2 className="title">บทความ : {title}</h2>
+      <img src={image} alt={title} className="blog-image" />
+      <div className="blog-detail">
+        <strong>ผู้เขียนบทความ: {author}</strong>
+        <p>{content}</p>
+      </div>
+    </div>
+  )
+}
+```

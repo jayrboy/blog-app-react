@@ -1,11 +1,11 @@
-import Home from "./components/Home";
-import About from "./components/About";
-import Blogs from "./components/Blogs";
-import Navbar from "./components/Navbar";
-import NotFound from "./components/NotFound";
-import Details from "./components/Details";
+import Home from './components/Home'
+import About from './components/About'
+import Blogs from './components/Blogs'
+import Navbar from './components/Navbar'
+import NotFound from './components/NotFound'
+import Details from './components/Details'
 
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <Route path="/blog/:id" element={<Details />}></Route>
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
-export default App;
+export default App
